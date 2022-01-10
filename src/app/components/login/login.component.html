@@ -1,0 +1,36 @@
+<div class="container vh-100">
+  <div class="row justify-content-center h-100">
+      <div class="card my-auto shadow">
+          <div class="card-body px-5">
+              <div class="text-center">
+          <h1>Welcome</h1>
+          <h6>please enter email & password!!</h6>
+        </div>
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+          <!--Start form group-->
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input  type="email" class="form-control" name="email"  placeholder="Enter email"
+              ngModel autocomplete="email" required email #email="ngModel">
+              <small id="emailHelp" class="form-text text-muted" *ngIf="!email.valid && email.touched">
+                please enter a valid email!</small>
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" name="password" placeholder="Password"
+              ngModel autocomplete="current-password" required>
+            </div>
+            <!--check buttton-->
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="! f.valid">login</button>
+          </form>
+      <a style="color:#fff" routerLink="../register">New user? click to register</a>
+      </div>
+    </div>
+  </div>
+</div>

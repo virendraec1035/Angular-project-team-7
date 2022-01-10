@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row ">
+      <div class="card ">
+          <div class="card-body px-5">
+              <div class="text-center">
+          <h2>Register yourself!!</h2>
+          <p>Please enter your detials</p>
+        </div>
+        <form class="form-group" #postForm="ngForm" (submit)="onAddUsers(postForm)">
+          <!--Start form group-->
+           <div class="form-group">
+             <!--full-Name-->
+            <label for="fullName">Full-Name</label>
+            <input type="text" name="fullName" id="fullName" class="form-control" placeholder="Enter full-Name"
+            pattern="([A-Z a-z])"ngModel required fullname autocomplete="off">
+          </div>
+          <!--mobile number-->
+          <div class="form-group">
+            <label for="contactNo">Contact No</label>
+            <input  type="tel" class="form-control" id="contactNo" name="contactNo" placeholder="contact number" ngModel required maxlength="10" minlength="10" contactNo autocomplete="off">
+          </div>
+          <!--E-mail-address-->
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input name="email" type="email" class="form-control" id="email" placeholder="Enter email" ngModel required email #email="ngModel" autocomplete="off">
+            </div>
+            <!--password-->
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input name="password" type="password" class="form-control" id="password"
+               placeholder="Password" ngModel required
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" password #password="ngModel" autocomplete="off">
+            </div>
+         <!--submit button-->
+            <button  class="btn btn-primary" [disabled]="!postForm.valid">Register</button>
+          </form>
+         <a style="color: #fff;" routerLink="../login">Already Register? click to login</a>
+      </div>
+    </div>
+  </div>
+</div>
+
