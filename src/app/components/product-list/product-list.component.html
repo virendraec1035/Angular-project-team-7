@@ -1,4 +1,4 @@
-<p>Home works</p>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
       <a class="navbar-brand" href="#">Vegitable & Fruits Store</a>
@@ -9,7 +9,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
               <li class="nav-item " routerLinkActive="active">
-                  <a class="nav-link" routerLink="./register">Home
+                  <a class="nav-link" routerLink="/">Home
                       <span class="sr-only"></span>
                   </a>
               </li>
@@ -20,7 +20,7 @@
                   <a class="nav-link" routerLink="../register">Register</a>
               </li>
               <li class="nav-item" routerLinkActive="active">
-                  <a class="nav-link" routerLink="./login">Login</a>
+                  <a class="nav-link" routerLink="../login">Login</a>
               </li>
               <li class=" btn-primary nav-item text-white" role="button">
                   <a class="nav-link text-white">logout</a>
@@ -29,4 +29,29 @@
       </div>
   </div>
 </nav>
-<p>Hello</p>
+
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <div class="row">
+
+        <!----loop over the collection of products-->
+
+         <div *ngFor="let tempProduct of products" class="col-md-3">
+
+          <div class="product-box">
+           <img src="{{tempProduct.imageUrl}}" class="img-responsive">
+           <h1>{{tempProduct.prod_name}}</h1>
+           <p>{{tempProduct.description}}</p>
+           <div class="price">{{tempProduct.price |currency:'INR'}}</div>
+          <button (click)="addToCart(tempProduct)" class="btn btn-primary btn-sm">Add to cart</button>
+          </div>
+
+         </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

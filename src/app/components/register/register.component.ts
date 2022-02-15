@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { User } from '../services/user';
-import { UsersService } from '../services/users.service';
 
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { subscribeOn } from 'rxjs';
+import { RegisterService } from '../services/register.service';
+import { User } from '../services/user';
 
 
 @Component({
@@ -10,26 +12,27 @@ import { UsersService } from '../services/users.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent{
-  users:any=[];
-  service:UsersService;
+export class RegisterComponent implements OnInit {
 
-  constructor(service:UsersService){
-    this.service=service;
+  user = new User();
+  msg='';
+
+  constructor(private _service : RegisterService, private _router : Router) { }
+
+  ngOnInit(): void {
   }
 
+  registerUser(){
+    this._service.registerUserFromRemote(this.user).subscribe(
+      data =>{
+      console.log("response recieved");
+      this._router.navigate(['/login']);
+  },
+   error =>{
+     console.log("Exception occured");
+     this.msg=error.error;
+   }
 
-  onAddUsers(form:NgForm){
-    const newUser:User={
-      fullName: form.value.fullName,
-      contactNo: form.value.contactNo,
-      email: form.value.email,
-      password: form.value.password,
-
-    };
-    this.service.addNewUsers(newUser).subscribe((responce)=>{
-      console.log(responce);
-    });
-
+    )
   }
 }

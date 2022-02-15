@@ -13,6 +13,14 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { CartStatusComponent } from './components/cart-status/cart-status.component';
+import { CartDetailsComponent } from './components/cart-details/cart-details.component';
+import { Routes } from '@angular/router';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +30,10 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     DashboardComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ProductListComponent,
+    CartStatusComponent,
+    CartDetailsComponent
   ],
   imports: [
     BrowserModule,
